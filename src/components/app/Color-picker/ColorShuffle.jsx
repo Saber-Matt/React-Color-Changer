@@ -1,32 +1,27 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
-import ColorDisplay from '../color-picker/ColorDisplay';
+import ColorRender from './ColorRender';
 
-
-const colors = ['red', 'yellow', 'blue', 'orange', 'teal', 'pink'];
-const colorSwitch = colors[Math.floor(Math.random() * colors.length)];
 
 class ColorShuffle extends Component {
+  
+  state = {
+    color: ''
+  }
+  
+  componentDidMount(){
+    const colors = ['red', 'yellow', 'blue', 'orange', 'teal', 'pink'];
+    setInterval(() => {
+      const colorSwitch = colors[Math.floor(Math.random() * colors.length)];
+      this.setState({ color: colorSwitch });
+    }, 1000);
+  }
 
-state = {
-  time: '',
-  color: colorSwitch,
-}
-
-  componentDidMount = () => {
-    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
-  };
-  componentDismount = () => {
-    clearInterval(this.interval());
-  };
-
-  render() {
+  render(){
     const { color } = this.state;
+    console.log(color);
     return (
-      <>
-
-        <ColorDisplay backgroundColor = { color }/>
-      </>
+      <ColorRender backgroundColor = {color}/>
     );
   }
 }

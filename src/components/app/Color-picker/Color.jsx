@@ -3,18 +3,18 @@ import ColorRender from './ColorRender';
 
 export default class Color extends Component {
     state = {
-        selectedColor: 'red',
+      selectedColor: 'red',
     };
 
     handleColorChange = (color) => {
-        this.setState({ selectedColor: color });
+      this.setState({ selectedColor: color });
     };
 
     render() {
-        const colors = ['red', 'yellow','blue' , 'orange', 'teal', 'pink'];
-        const { selectedColor } = this.state;
+      const colors = ['red', 'yellow', 'blue', 'orange', 'teal', 'pink'];
+      const { selectedColor } = this.state;
+      return (<ColorRender backgroundColor={selectedColor} />);
     }
 
-    return( <ColorRender backgroundColor={selectedColor} /> );
 
 }
